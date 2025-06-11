@@ -1,0 +1,81 @@
+import Navbar from '../components/Navbar';
+import '../styles/Landing.css';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+const LandingPage = () => {
+  const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChatClick = async () => {
+    if (!token) return;
+    setLoading(true);
+    try {
+      const API_URL = import.meta.env.API_URL || "http://localhost:5000";
+      const res = await fetch(`${API_URL}/api/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const user = await res.json();
+      if (user && user.id) {
+        navigate(`/u/${user.id}`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <Navbar />
+      <main className="landing-main">
+        <div className="circle glow-circle"></div>
+        <div className="circle small-circle light"></div>
+        <div className="circle small-circle dark"></div>
+
+        <section className="hero">
+          <h1>
+            <span className="highlight">MISCOH BOT</span> <br />
+            <span className="subtitle">AI Code Assistant & Chat</span>
+          </h1>
+          <p className="hero-desc">
+            Instantly get code help, debugging, and programming answers in a beautiful, modern chat. <br />
+            Powered by AI. Built for developers in 2025.
+          </p>
+          <div className="hero-actions">
+            {!token ? (
+              <>
+                <a href="/signup" className="cta-btn">Get Started</a>
+                <a href="/login" className="secondary-btn">Login</a>
+              </>
+            ) : (
+              <button
+                className="cta-btn"
+                onClick={handleChatClick}
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Chat with MISCOH"}
+              </button>
+            )}
+          </div>
+        </section>
+        <section className="features">
+          <div className="feature-card">
+            <h3>💡 Instant Code Help</h3>
+            <p>Ask questions and get code, explanations, or debugging tips in seconds.</p>
+          </div>
+          <div className="feature-card">
+            <h3>🎨 Modern Chat UI</h3>
+            <p>Enjoy a clean, responsive interface with dark/light mode and code highlighting.</p>
+          </div>
+          <div className="feature-card">
+            <h3>🔒 Secure & Private</h3>
+            <p>Your chats and code are private and protected with secure authentication.</p>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+};
+
+export default LandingPage;

@@ -1,0 +1,73 @@
+.main-header {
+  width: 100%;
+  background: var(--color-card-bg);
+  border-bottom: 1.5px solid var(--color-border);
+  box-shadow: 0 2px 12px var(--glow-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-purple);
+  gap: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: color 0.2s;
+  padding: 0.3em 1em;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  color: var(--light-purple);
+  background: var(--glow-color);
+}
+
+.signup-btn {
+  background: var(--color-button-bg);
+  color: var(--color-button-text) !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.3em 1.2em;
+  box-shadow: 0 2px 8px var(--glow-color);
+  transition: background 0.2s, color 0.2s;
+}
+
+.signup-btn:hover {
+  filter: brightness(1.08);
+  color: var(--color-card-bg) !important;
+}
+
+.logo-container {
+  height: 3rem; 
+}

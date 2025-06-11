@@ -1,0 +1,10 @@
+.logo-text {
+  font-family: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  color: var(--light-purple);
+  background: linear-gradient(90deg, var(--bright-purple) 40%, var(--light-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,12 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--logo-color);
+}
+
+.logo-svg {
+  display: block;
+  color: var(--logo-color);
+  transition: color 0.3s;
+}

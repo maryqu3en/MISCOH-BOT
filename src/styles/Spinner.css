@@ -1,0 +1,31 @@
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 1rem;
+}
+
+.spinner-circle {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--light-purple, #a78bfa);
+  border-top: 5px solid var(--dark-purple, #5a41a0);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  background: transparent;
+}
+
+.spinner-text {
+  color: var(--color-subtext, #888);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
