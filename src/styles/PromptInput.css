@@ -1,0 +1,52 @@
+.prompt-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--color-card-bg);
+  border-top: 1.5px solid var(--color-border);
+}
+
+.prompt-input {
+  flex: 1;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.9em 1em;
+  font-size: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  resize: none;
+  transition: border 0.2s, background 0.2s;
+  min-height: 44px;
+  max-height: 120px;
+}
+
+.prompt-input:focus {
+  border: 1.5px solid var(--light-purple);
+  outline: none;
+  background: var(--color-card-bg);
+}
+
+.send-btn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px var(--glow-color);
+}
+
+.send-btn:hover {
+  border-color: var(--light-purple);
+  filter: brightness(1.05);
+}
+
+.send-btn:disabled {
+  background: var(--color-button-bg-disabled);
+  cursor: not-allowed;
+}

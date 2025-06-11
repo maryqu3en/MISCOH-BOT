@@ -1,3 +1,5 @@
+import '../styles/ChatMessage.css'
+
 const ChatMessage = ({ message, isUser }) => (
   <div className={`chat-message ${isUser ? 'user' : 'assistant'}`}>
     <div className="bubble">
@@ -6,7 +8,7 @@ const ChatMessage = ({ message, isUser }) => (
       ) : (
         <span className="assistant-label">Miscoh</span>
       )}
-      <pre>{message}</pre>
+      <p>{message}</p>
     </div>
   </div>
 );
