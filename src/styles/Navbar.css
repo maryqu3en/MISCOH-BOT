@@ -1,12 +1,20 @@
 .main-header {
   width: 100%;
-  background: var(--color-card-bg);
-  border-bottom: 1.5px solid var(--color-border);
-  box-shadow: 0 2px 12px var(--glow-color);
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(167,139,250,0.08) 88%,
+    rgba(167,139,250,0.18) 97%,
+    rgba(167,139,250,0.22) 100%
+  );
+  box-shadow: 0 6px 18px 0 rgba(120, 80, 255, 0.22); /* clearer, more visible shadow */
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  transition: background 0.3s;
 }
 
 .header-content {
@@ -51,6 +59,35 @@
 .nav-links a:hover {
   color: var(--light-purple);
   background: var(--glow-color);
+}
+
+.nav-links a[href="/login"] {
+  display: inline-block;
+  padding: 0.55em 1.4em;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--dark-purple);
+  font-weight: 700;
+  font-size: 1.12rem;
+  border: 2px solid var(--light-purple);
+  box-shadow: none;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border 0.18s,
+    box-shadow 0.18s;
+  margin-left: 0.7rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.nav-links a[href="/login"]:hover,
+.nav-links a[href="/login"]:focus {
+  background: rgba(167,139,250,0.18);
+  color: var(--dark-purple);
+  border-color: var(--dark-purple);
+  box-shadow: 0 2px 8px 0 rgba(167,139,250,0.13);
 }
 
 .signup-btn {

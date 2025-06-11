@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { showError, showSuccess } from "./Toast";
-import { FaUser, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+import Logo from "./Logo";
 
 const API_URL = import.meta.env.API_URL  || "http://localhost:5000";
 
@@ -43,11 +44,16 @@ const LoginForm = ({ onLogin }) => {
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
-      <label>
-        Email
-        <div className="input-group">
-          <FaUser />
+      <div className="auth-form-header">
+        <span className="logo"><Logo /></span>
+        <span className="site-name">MISCOH BOT</span>
+      </div>
+      <div className="input-row">
+        <label htmlFor="email">Email</label>
+        <div className="input-icon-wrapper">
+          <span className="input-icon"><FaEnvelope /></span>
           <input
+            id="email"
             type="email"
             autoComplete="username"
             value={email}
@@ -56,12 +62,13 @@ const LoginForm = ({ onLogin }) => {
             disabled={loading}
           />
         </div>
-      </label>
-      <label>
-        Password
-        <div className="input-group">
-          <FaLock />
+      </div>
+      <div className="input-row">
+        <label htmlFor="password">Password</label>
+        <div className="input-icon-wrapper">
+          <span className="input-icon"><FaLock /></span>
           <input
+            id="password"
             type="password"
             autoComplete="current-password"
             value={password}
@@ -70,7 +77,7 @@ const LoginForm = ({ onLogin }) => {
             disabled={loading}
           />
         </div>
-      </label>
+      </div>
       <button type="submit" disabled={loading}>
         {loading ? "Logging in..." : "Login"}
       </button>

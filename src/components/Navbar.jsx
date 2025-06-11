@@ -16,7 +16,6 @@ const Navbar = () => {
           {!token ? (
             <>
               <a href="/login">Login</a>
-              <a href="/signup" className="signup-btn">Sign Up</a>
             </>
           ) : (
             <a href="/chat" className="signup-btn">Chat with MISCOH</a>

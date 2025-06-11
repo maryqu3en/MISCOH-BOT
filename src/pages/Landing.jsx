@@ -2,6 +2,8 @@ import Navbar from '../components/Navbar';
 import '../styles/Landing.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { FaRocket, FaSignInAlt } from "react-icons/fa";
+import robotImg from '../assets/robot.png';
 
 const LandingPage = () => {
   const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
@@ -34,29 +36,52 @@ const LandingPage = () => {
         <div className="circle small-circle dark"></div>
 
         <section className="hero">
-          <h1>
-            <span className="highlight">MISCOH BOT</span> <br />
-            <span className="subtitle">AI Code Assistant & Chat</span>
-          </h1>
-          <p className="hero-desc">
-            Instantly get code help, debugging, and programming answers in a beautiful, modern chat. <br />
-            Powered by AI. Built for developers in 2025.
-          </p>
-          <div className="hero-actions">
-            {!token ? (
-              <>
-                <a href="/signup" className="cta-btn">Get Started</a>
-                <a href="/login" className="secondary-btn">Login</a>
-              </>
-            ) : (
-              <button
-                className="cta-btn"
-                onClick={handleChatClick}
-                disabled={loading}
-              >
-                {loading ? "Loading..." : "Chat with MISCOH"}
-              </button>
-            )}
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1>
+                <span className="highlight">MISCOH BOT</span>
+                <br />
+                <span className="subtitle">AI Code Assistant & Chat</span>
+              </h1>
+              <p className="hero-desc">
+                Instantly get code help, debugging, and programming answers in a beautiful, modern chat. <br />
+                Powered by AI. Built for developers in 2025.
+              </p>
+              <div className="hero-actions">
+                {!token ? (
+                  <>
+                    <a href="/signup" className="cta-btn">
+                      <FaRocket style={{ marginRight: "0.6em", verticalAlign: "middle" }} />
+                      Get Started
+                    </a>
+                    <a href="/login" className="secondary-btn">
+                      <FaSignInAlt style={{ marginRight: "0.5em", verticalAlign: "middle" }} />
+                      Login
+                    </a>
+                  </>
+                ) : (
+                  <button
+                    className="cta-btn"
+                    onClick={handleChatClick}
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Chat with MISCOH"}
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="hero-image">
+              <img
+                src={robotImg}
+                alt="MISCOH Bot waving"
+                loading="lazy"
+                style={{
+                  maxWidth: "400px",    // Increased from 320px to 400px
+                  width: "100%",
+                  height: "auto"
+                }}
+              />
+            </div>
           </div>
         </section>
         <section className="features">

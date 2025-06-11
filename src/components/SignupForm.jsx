@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { showError, showSuccess } from "./Toast";
 import { useNavigate } from "react-router-dom";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import Logo from "./Logo";
 
 const API_URL = import.meta.env.API_URL || "http://localhost:5000";
 
@@ -45,58 +47,58 @@ const SignupForm = ({ onSignup }) => {
     }
   };
 
-  const handleChatClick = async () => {
-    if (!token) return;
-    setLoading(true);
-    try {
-      const res = await fetch(`${API_URL}/api/auth/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const user = await res.json();
-      if (user && user.id) {
-        navigate(`/u/${user.id}`);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
-      <label>
-        Username
-        <input
-          type="text"
-          autoComplete="username"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          required
-          disabled={loading}
-        />
-      </label>
-      <label>
-        Email
-        <input
-          type="email"
-          autoComplete="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-          disabled={loading}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          autoComplete="new-password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-          minLength={6}
-          disabled={loading}
-        />
-      </label>
+      <div className="auth-form-header">
+        <span className="logo"><Logo /></span>
+        <span className="site-name">MISCOH BOT</span>
+      </div>
+      <div className="input-row">
+        <label htmlFor="username">Username</label>
+        <div className="input-icon-wrapper">
+          <span className="input-icon"><FaUser /></span>
+          <input
+            id="username"
+            type="text"
+            autoComplete="username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            required
+            disabled={loading}
+          />
+        </div>
+      </div>
+      <div className="input-row">
+        <label htmlFor="email">Email</label>
+        <div className="input-icon-wrapper">
+          <span className="input-icon"><FaEnvelope /></span>
+          <input
+            id="email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            disabled={loading}
+          />
+        </div>
+      </div>
+      <div className="input-row">
+        <label htmlFor="password">Password</label>
+        <div className="input-icon-wrapper">
+          <span className="input-icon"><FaLock /></span>
+          <input
+            id="password"
+            type="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            minLength={6}
+            disabled={loading}
+          />
+        </div>
+      </div>
       <button type="submit" disabled={loading}>
         {loading ? "Signing up..." : "Sign Up"}
       </button>
