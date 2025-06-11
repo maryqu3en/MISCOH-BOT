@@ -26,3 +26,4 @@ dist-ssr
 server
 tests
 .env
+.vercel
