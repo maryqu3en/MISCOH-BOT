@@ -4,7 +4,7 @@ import PromptInput from "./PromptInput";
 import { showError } from "./Toast";
 import '../styles/ChatRoom.css';
 
-const API_URL = import.meta.env.API_URL || "http://localhost:5000";
+const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const ChatRoom = ({ sessionId }) => {
   const [prompt, setPrompt] = useState('');
@@ -15,7 +15,7 @@ const ChatRoom = ({ sessionId }) => {
     const token = localStorage.getItem("token");
     if (!sessionId || !token) return;
     setLoading(true);
-    fetch(`${API_URL}/api/chats/${sessionId}`, {
+    fetch(`${VITE_API_URL}/api/chats/${sessionId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -40,7 +40,7 @@ const ChatRoom = ({ sessionId }) => {
     setLoading(true);
 
     try {
-      await fetch(`${API_URL}/api/chats`, {
+      await fetch(`${VITE_API_URL}/api/chats`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const ChatRoom = ({ sessionId }) => {
         body: JSON.stringify({ message: prompt, role: "user", session: sessionId })
       });
 
-      const res = await fetch(`${API_URL}/api/cohere/generate`, {
+      const res = await fetch(`${VITE_API_URL}/api/cohere/generate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const ChatRoom = ({ sessionId }) => {
       });
       const data = await res.json();
       if (res.ok && data.output) {
-        await fetch(`${API_URL}/api/chats`, {
+        await fetch(`${VITE_API_URL}/api/chats`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

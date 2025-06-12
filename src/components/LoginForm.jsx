@@ -3,7 +3,7 @@ import { showError, showSuccess } from "./Toast";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import Logo from "./Logo";
 
-const API_URL = import.meta.env.API_URL  || "http://localhost:5000";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const LoginForm = ({ onLogin }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/api/auth/login`, {
+      const res = await fetch(`${VITE_API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -22,7 +22,7 @@ const LoginForm = ({ onLogin }) => {
       const data = await res.json();
       if (res.ok && data.token) {
         localStorage.setItem("token", data.token);
-        const userRes = await fetch(`${API_URL}/api/auth/me`, {
+        const userRes = await fetch(`${VITE_API_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${data.token}` },
         });
         const user = await userRes.json();

@@ -6,7 +6,7 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 import ThemeToggle from'./ThemeToggle'; 
 import axios from "axios";
 
-const API_URL = import.meta.env.API_URL || "http://localhost:5000";
+const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const UserSidebar = () => {
   const [sessions, setSessions] = useState([]);
@@ -21,7 +21,7 @@ const UserSidebar = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
     axios
-      .get(`${API_URL}/api/sessions`, {
+      .get(`${VITE_API_URL}/api/sessions`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(res => setSessions(res.data || []))
@@ -53,7 +53,7 @@ const UserSidebar = () => {
     setCreating(true);
     try {
       const res = await axios.post(
-        `${API_URL}/api/sessions`,
+        `${VITE_API_URL}/api/sessions`,
         { title: newTitle },
         { headers: { Authorization: `Bearer ${token}` } }
       );

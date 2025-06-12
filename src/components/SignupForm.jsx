@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import Logo from "./Logo";
 
-const API_URL = import.meta.env.API_URL || "http://localhost:5000";
+const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const SignupForm = ({ onSignup }) => {
   const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ const SignupForm = ({ onSignup }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/api/auth/register`, {
+      const res = await fetch(`${VITE_API_URL}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
@@ -27,7 +27,7 @@ const SignupForm = ({ onSignup }) => {
       if (res.ok && data.token) {
         localStorage.setItem("token", data.token);
         setToken(data.token);
-        const userRes = await fetch(`${API_URL}/api/auth/me`, {
+        const userRes = await fetch(`${VITE_API_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${data.token}` },
         });
         const user = await userRes.json();
