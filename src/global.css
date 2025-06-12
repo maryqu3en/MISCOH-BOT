@@ -35,7 +35,7 @@
 }
 
 [data-theme="dark"] {
-  --color-bg: #0e0e12;
+  --color-bg: #0e0e12;  
   --color-text: #e3d6f8;
   --color-subtext: #b1a7bd;
   --dark-purple: #5a41a0;

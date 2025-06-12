@@ -1,14 +1,21 @@
 import Navbar from '../components/Navbar';
 import '../styles/Landing.css';
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaRocket, FaSignInAlt } from "react-icons/fa";
 import robotImg from '../assets/robot.png';
+import LoadingScreen from "../components/LoadingScreen"; // <-- import
 
 const LandingPage = () => {
   const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [loading, setLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true); // <-- loading state
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLoading(false), 500); // 1.5s
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleChatClick = async () => {
     if (!token) return;
@@ -26,6 +33,8 @@ const LandingPage = () => {
       setLoading(false);
     }
   };
+
+  if (showLoading) return <LoadingScreen />; // <-- show loading first
 
   return (
     <>
