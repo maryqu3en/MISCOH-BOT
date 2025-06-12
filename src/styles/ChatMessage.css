@@ -43,7 +43,7 @@
 }
 
 .user-label {
-  color: var(--dark-purple);
+  color: var(--color-text);
 }
 
 .assistant-label {
