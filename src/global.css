@@ -90,18 +90,6 @@ body {
   padding: 0;
 }
 
-.result-display {
-  background: #f4f6fb;
-  border-radius: 8px;
-  padding: 18px;
-  font-size: 1rem;
-  color: #22223b;
-  white-space: pre-wrap;
-  box-shadow: 0 1px 4px rgba(34, 34, 59, 0.04);
-  margin-top: 8px;
-  overflow-x: auto;
-}
-
 .theme-toggle {
   background: none;
   border: none;
