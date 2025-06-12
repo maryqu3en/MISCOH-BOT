@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import Logo from "./Logo";
 
-const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const VITE_API_URL = import.meta.env.VITE_API_URL ;
 
 const SignupForm = ({ onSignup }) => {
   const [username, setUsername] = useState("");

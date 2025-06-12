@@ -21,7 +21,7 @@ const LandingPage = () => {
     if (!token) return;
     setLoading(true);
     try {
-      const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const VITE_API_URL = import.meta.env.VITE_API_URL ;
       const res = await fetch(`${VITE_API_URL}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });

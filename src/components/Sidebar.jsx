@@ -6,7 +6,7 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 import ThemeToggle from'./ThemeToggle'; 
 import axios from "axios";
 
-const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const VITE_API_URL = import.meta.env.VITE_API_URL ;
 
 const UserSidebar = () => {
   const [sessions, setSessions] = useState([]);
