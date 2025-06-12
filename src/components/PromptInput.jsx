@@ -1,3 +1,5 @@
+import '../styles/PromptInput.css';
+
 const PromptInput = ({ prompt, setPrompt, onSend, loading }) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey && prompt.trim()) {

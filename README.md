@@ -1,100 +1,59 @@
-### **1. User Registration**
-- **API:** `POST /api/auth/register`
-- **Body:** `{ username, email, password }`
-- **Frontend:** Call this when a user signs up. On success, store the returned JWT token.
+# MISCOH BOT
+
+**MISCOH BOT** is an AI-powered code assistant and chat platform for developers. Instantly get code help, debugging, and programming answers in a modern, secure chat interface.
+
+Powered by **Cohere AI APIs**. 
+---
+
+## Features
+
+- 💡 **Instant Code Help:** Ask questions and get code, explanations, or debugging tips in seconds.
+- 🎨 **Modern Chat UI:** Clean, responsive interface with dark/light mode and code highlighting.
+- 🔒 **Secure & Private:** Your chats and code are private and protected with secure authentication.
+- 📝 **Chat History:** All your sessions are saved and searchable.
+- 🤖 **AI Assistant:** Powered by advanced AI models for accurate and helpful responses.
 
 ---
 
-### **2. User Login**
-- **API:** `POST /api/auth/login`
-- **Body:** `{ email, password }`
-- **Frontend:** Call this when a user logs in. On success, store the JWT token for authenticated requests.
+## API Overview
+
+### Authentication
+
+- `POST /api/auth/signup` — Register a new user
+- `POST /api/auth/login` — Login and receive a JWT token
+- `GET /api/auth/me` — Get current user info (requires token)
+
+### Sessions (Chats)
+
+- `GET /api/sessions` — List all chat sessions for the user
+- `POST /api/sessions` — Create a new chat session `{ title }`
+- `DELETE /api/sessions/:id` — Delete a chat session
+
+### Messages
+
+- `GET /api/chats/:sessionId` — Get all messages for a session
+- `POST /api/chats` — Add a message `{ message, role, session }`
+
+### AI Assistant
+
+- `POST /api/cohere/generate` — Get an AI-generated reply `{ prompt, session }`
 
 ---
 
-### **3. Get Current User**
-- **API:** `GET /api/auth/me`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Use this to fetch the logged-in user's info (e.g., on app load if token exists).
+## Customization
+
+- **Themes:** Toggle dark/light mode from the sidebar.
+- **Environment:** Configure API endpoints and keys in `.env` files.
+- **AI Model:** Plug in your own AI backend by editing `server/controllers/cohere.controller.js`.
 
 ---
 
-### **4. Create a Chat Session**
-- **API:** `POST /api/sessions`
-- **Headers:** `Authorization: Bearer <token>`
-- **Body:** `{ title }` (optional)
-- **Frontend:** Call this to start a new chat (e.g., when user clicks "New Chat"). Store the returned session ID.
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
-### **5. Get All User Sessions**
-- **API:** `GET /api/sessions`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Call this to list all chat sessions for the user (e.g., sidebar/history).
+## Credits
 
----
-
-### **6. Get a Single Session**
-- **API:** `GET /api/sessions/:id`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Call this to get info for a specific session (optional, if you need more details).
-
----
-
-### **7. Delete a Session**
-- **API:** `DELETE /api/sessions/:id`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Call this to delete a chat session (e.g., user clicks "Delete Chat").
-
----
-
-### **8. Get Chat Messages for a Session**
-- **API:** `GET /api/chats/:sessionId`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Call this when opening a chat to load the conversation history.
-
----
-
-### **9. Add a Chat Message**
-- **API:** `POST /api/chats`
-- **Headers:** `Authorization: Bearer <token>`
-- **Body:** `{ message, role, session }`
-- **Frontend:** Call this when the user sends a message.  
-  - `role` is `"user"` for user messages, `"assistant"` for assistant replies.
-  - `session` is the current session ID.
-
----
-
-### **10. Delete All Messages in a Session**
-- **API:** `DELETE /api/chats/session/:sessionId`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Call this to clear a chat's history.
-
----
-
-### **11. Delete a Single Message**
-- **API:** `DELETE /api/chats/:id`
-- **Headers:** `Authorization: Bearer <token>`
-- **Frontend:** Call this to delete a specific message.
-
----
-
-### **12. Generate Assistant Response**
-- **API:** `POST /api/cohere/generate`
-- **Headers:** `Authorization: Bearer <token>`
-- **Body:** `{ prompt, session }`
-- **Frontend:**  
-  - After the user sends a message, call this to get the assistant's reply.
-  - Use the returned text as the assistant's message and store it with `POST /api/chats`.
-
----
-
-## **Example Chat Flow**
-1. **User logs in** → store JWT.
-2. **User starts a new chat** → `POST /api/sessions` → get session ID.
-3. **User sends a message**:
-   - `POST /api/chats` (save user message)
-   - `POST /api/cohere/generate` (get assistant reply)
-   - `POST /api/chats` (save assistant reply)
-4. **Load chat history** → `GET /api/chats/:sessionId`
-5. **User can delete messages or sessions as needed.**
+- Built with [React](https://react.dev/), [Express](https://expressjs.com/), [MongoDB](https://www.mongodb.com/), and [Cohere](https://cohere.com/) AI.

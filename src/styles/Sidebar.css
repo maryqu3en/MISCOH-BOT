@@ -1,5 +1,5 @@
 .user-sidebar {
-  width: 270px;
+  width: 200px;
   background: var(--color-card-bg);
   border-right: 1.5px solid var(--color-border);
   display: flex;

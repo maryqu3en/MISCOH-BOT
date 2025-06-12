@@ -97,6 +97,12 @@ const UserSidebar = () => {
               maxLength={60}
               autoFocus
               onBlur={() => setShowTitleInput(false)}
+              onKeyDown={e => {
+                if (e.key === "Escape") {
+                  setShowTitleInput(false);
+                  setNewTitle("");
+                }
+              }}
             />
             <button
               type="submit"

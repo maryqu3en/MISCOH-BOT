@@ -1,0 +1,10 @@
+.chat-room {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--color-card-bg);
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
