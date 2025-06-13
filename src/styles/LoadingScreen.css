@@ -38,3 +38,8 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+.logo-container {
+  height: 3rem;
+  width: 3rem;
+}

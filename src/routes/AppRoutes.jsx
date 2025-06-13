@@ -1,17 +1,18 @@
-import { Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import LandingPage from "../pages/Landing";
-import LoginPage from "../pages/Login";
-import SignupPage from "../pages/Signup";
-import NotFoundPage from "../pages/NotFound";
-import Spinner from "../components/Spinner";
-import UserLayout from "../layouts/UserLayout";
-import ChatPage from "../pages/ChatPage";
+import { Suspense, lazy } from "react";
+import { Routes, Route } from "react-router-dom";
+import LoadingScreen from "../components/LoadingScreen";
+
+const LandingPage = lazy(() => import("../pages/Landing"));
+const LoginPage = lazy(() => import("../pages/Login"));
+const SignupPage = lazy(() => import("../pages/Signup"));
+const NotFoundPage = lazy(() => import("../pages/NotFound"));
+const UserLayout = lazy(() => import("../layouts/UserLayout"));
+const ChatPage = lazy(() => import("../pages/ChatPage"));
 
 const UserChat = () => <div style={{ padding: "2rem" }}>Select or start a chat!</div>;
 
 const AppRoutes = () => (
-  <Suspense fallback={<Spinner />}>
+  <Suspense fallback={<LoadingScreen />}>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
