@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaRocket, FaSignInAlt } from "react-icons/fa";
 import robotImg from '../assets/robot.png';
-import LoadingScreen from "../components/LoadingScreen"; // <-- import
 
 const LandingPage = () => {
   const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
