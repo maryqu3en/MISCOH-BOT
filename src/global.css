@@ -85,7 +85,7 @@ html {
 
 body {
   background: #f6f8fa;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: var(--font-primary);
   margin: 0;
   padding: 0;
 }
